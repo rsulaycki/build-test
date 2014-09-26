@@ -11,7 +11,11 @@ public static class PostBuildTrigger
 	{
 		Debug.Log("Post Processing Build 1");
 		string strCmdText= "dir";
-		System.Diagnostics.Process.Start("CMD.exe",strCmdText);		
+		System.Diagnostics.Process p = new Process();
+		p.StartInfo.RedirectStandardOutput = true;
+		p.Start("CMD.exe",strCmdText);		
+		string output = p.StandardOutput.ReadToEnd();
+		Debug.Log("RS: The output of p is:" + output);
 	}
 	
 	[PostProcessBuild(0)] // <- this is where the magic happens
