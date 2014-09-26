@@ -11,7 +11,7 @@ public static class PostBuildTrigger
 	{
 		Debug.Log("Post Processing Build 1");
 		string command= "dir";
-		System.Diagnostics.ProcessStartInfo procStartInfo =new System.Diagnostics.ProcessStartInfo("cmd", "/c " + command);
+		System.Diagnostics.ProcessStartInfo procStartInfo =new System.Diagnostics.ProcessStartInfo("CMD.exe", "/c " + command);
 
    		procStartInfo.RedirectStandardOutput = true;
     		procStartInfo.UseShellExecute = false;
