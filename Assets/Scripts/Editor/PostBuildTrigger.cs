@@ -10,12 +10,20 @@ public static class PostBuildTrigger
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
 		Debug.Log("Post Processing Build 1");
-		string strCmdText= "dir";
-		System.Diagnostics.Process p = new System.Diagnostics.Process();
-		p.StartInfo.RedirectStandardOutput = true;
-		p.Start("CMD.exe",strCmdText);		
-		string output = p.StandardOutput.ReadToEnd();
-		Debug.Log("RS: The output of p is:" + output);
+		string command= "dir";
+		System.Diagnostics.ProcessStartInfo procStartInfo =new System.Diagnostics.ProcessStartInfo("cmd", "/c " + command);
+
+   		procStartInfo.RedirectStandardOutput = true;
+    		procStartInfo.UseShellExecute = false;
+    		// Do not create the black window.
+    		procStartInfo.CreateNoWindow = true;
+    		// Now we create a process, assign its ProcessStartInfo and start it
+    		System.Diagnostics.Process proc = new System.Diagnostics.Process();
+    		proc.StartInfo = procStartInfo;
+    		proc.Start();
+    		// Get the output into a string
+    		string result = proc.StandardOutput.ReadToEnd();
+		Debug.Log("RS: The output of p is: ", result);
 	}
 	
 	[PostProcessBuild(0)] // <- this is where the magic happens
