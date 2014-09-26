@@ -11,7 +11,7 @@ public static class PostBuildTrigger
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
 		Debug.Log("Post Processing Build 1");
-		string strCmdText= “dir”;
+		string strCmdText= “ls -l“;
 		System.Diagnostics.Process.Start("CMD.exe",strCmdText);		
 	}
 	
