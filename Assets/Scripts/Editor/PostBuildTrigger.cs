@@ -1,4 +1,5 @@
-﻿using System.IO;
+using System.IO;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -10,7 +11,8 @@ public static class PostBuildTrigger
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
 		Debug.Log("Post Processing Build 1");
-		
+		string strCmdText= “dir”;
+		System.Diagnostics.Process.Start("CMD.exe",strCmdText);		
 	}
 	
 	[PostProcessBuild(0)] // <- this is where the magic happens
