@@ -23,7 +23,7 @@ public static class PostBuildTrigger
     		proc.Start();
     		// Get the output into a string
     		string result = proc.StandardOutput.ReadToEnd();
-		Debug.Log("RS: The output of p is: ", result);
+		Debug.Log("RS: The output of p is: " + result);
 	}
 	
 	[PostProcessBuild(0)] // <- this is where the magic happens
