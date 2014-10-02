@@ -11,7 +11,7 @@ public static class PostBuildTrigger
 	{
 		Debug.Log("Post Processing Build 1");
 		// Get Required Paths
-        	string projectParent = Directory.GetParent(Application.dataPath);
+        	string projectParent = (Directory.GetParent(Application.dataPath)).ToString();
         	string buildname = Path.GetFileNameWithoutExtension(path);
         	Debug.Log("Project parent: " + projectParent + " buildname: " + buildname);
 	}
