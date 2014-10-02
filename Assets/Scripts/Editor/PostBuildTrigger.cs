@@ -10,20 +10,16 @@ public static class PostBuildTrigger
 	public static void OnPostProcessBuild(BuildTarget target, string path)
 	{
 		Debug.Log("Post Processing Build 1");
-		string command= "dir";
-		System.Diagnostics.ProcessStartInfo procStartInfo =new System.Diagnostics.ProcessStartInfo("CMD.exe", "/c " + command);
-
-   		procStartInfo.RedirectStandardOutput = true;
-    		procStartInfo.UseShellExecute = false;
-    		// Do not create the black window.
-    		procStartInfo.CreateNoWindow = true;
-    		// Now we create a process, assign its ProcessStartInfo and start it
-    		System.Diagnostics.Process proc = new System.Diagnostics.Process();
-    		proc.StartInfo = procStartInfo;
-    		proc.Start();
-    		// Get the output into a string
-    		string result = proc.StandardOutput.ReadToEnd();
-		Debug.Log("RS: The output of p is: " + result);
+		// Get Required Paths
+        	projectParent = Directory.GetParent(Application.dataPath);
+        	buildname = Path.GetFileNameWithoutExtension(path);
+ 
+        	// Do Certain actions on your files (Copy, remove or email them to NASA your decision)
+        	filecount = 0;
+        	dircount = 0;
+//        	CopyAll(new DirectoryInfo(projectParent.ToString() + divider + srcName), new DirectoryInfo(buildDataDir));
+ 
+        	Debug.Log("Project parent: + projectParent + " buildname:" + buildname);
 	}
 	
 	[PostProcessBuild(0)] // <- this is where the magic happens
